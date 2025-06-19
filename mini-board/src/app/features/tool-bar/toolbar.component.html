@@ -1,0 +1,14 @@
+<div class="w-full bg-white shadow-md p-2 flex gap-4 items-center sticky top-0 z-50">
+  <button mat-icon-button (click)="emit('note')" matTooltip="Adicionar Nota">
+    <mat-icon>sticky_note_2</mat-icon>
+  </button>
+  <button mat-icon-button (click)="emit('card')" matTooltip="Adicionar Card">
+    <mat-icon>view_agenda</mat-icon>
+  </button>
+  <button mat-icon-button (click)="emit('shape')" matTooltip="Adicionar Forma">
+    <mat-icon>category</mat-icon>
+  </button>
+  <button mat-icon-button (click)="emit('image')" matTooltip="Adicionar Imagem">
+    <mat-icon>image</mat-icon>
+  </button>
+</div>

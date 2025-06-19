@@ -1,0 +1,9 @@
+<app-toolbar (addItem)="addItem($event)"></app-toolbar>
+
+<!-- Renderização delegada para o componente BoardItem -->
+<app-board-item
+  *ngFor="let item of items"
+  [item]="item"
+  [resizeHandles]="resizeHandles"
+  (remove)="removeItem($event)"
+></app-board-item>

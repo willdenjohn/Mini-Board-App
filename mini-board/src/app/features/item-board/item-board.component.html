@@ -1,0 +1,33 @@
+<div
+  class="absolute"
+  [style.top.px]="item.y"
+  [style.left.px]="item.x"
+  [style.width.px]="item.width"
+  [style.height.px]="item.height"
+  [ngClass]="item.color ? 'bg-' + item.color + '-200' : ''"
+>
+  <!-- Botão de remover -->
+  <button
+    (click)="remove.emit(item.id)"
+    class="absolute top-1 right-1 bg-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-100 pointer-events-auto shadow"
+    aria-label="Remover item"
+  >
+    <mat-icon fontIcon="close" class="text-red-600 text-sm">close</mat-icon>
+  </button>
+
+  <!-- Conteúdo do item -->
+  <ng-container [ngSwitch]="item.type">
+    <textarea
+      *ngSwitchCase="'note'"
+      [(ngModel)]="item.text"
+      class="w-full h-full resize-none bg-transparent outline-none p-2 pointer-events-auto"
+    ></textarea>
+    <div *ngSwitchCase="'shape'" [ngSwitch]="item.shapeType">
+      <div *ngSwitchCase="'circle'" class="w-full h-full rounded-full" [style.background]="item.color"></div>
+      <div *ngSwitchCase="'rectangle'" class="w-full h-full" [style.background]="item.color"></div>
+      <div *ngSwitchCase="'triangle'" class="w-0 h-0 border-l-[50px] border-r-[50px] border-b-[100px]" [style.borderBottomColor]="item.color"></div>
+    </div>
+    <img *ngSwitchCase="'image'" [src]="item.imageUrl" class="w-full h-full object-cover rounded" />
+    <!-- Adicione outros tipos conforme necessário -->
+  </ng-container>
+</div>
